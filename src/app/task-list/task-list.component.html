@@ -1,0 +1,26 @@
+<mat-card>
+    <h3>Add Task</h3>
+    <input [(ngModel)]="newTask.title" placeholder="Task Title" />
+    <input [(ngModel)]="newTask.description" placeholder="Task Description" />
+    <button mat-button (click)="addTask()">Add Task</button>
+  </mat-card>
+  
+  <!-- Edit Task Section -->
+  <mat-card *ngIf="editingTask">
+    <h3>Edit Task</h3>
+    <input [(ngModel)]="editingTask.title" placeholder="Task Title" />
+    <input [(ngModel)]="editingTask.description" placeholder="Task Description" />
+    <button mat-button (click)="saveEditedTask()">Save</button>
+    <button mat-button (click)="cancelEdit()">Cancel</button>
+  </mat-card>
+  
+  <!-- Task List -->
+  <div *ngFor="let task of tasks">
+    <mat-card>
+      <h3>{{ task.title }}</h3>
+      <p>{{ task.description }}</p>
+      <button mat-button (click)="editTask(task)">Edit</button>
+      <button mat-button (click)="deleteTask(task.id)">Delete</button>
+    </mat-card>
+  </div>
+  
